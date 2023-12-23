@@ -137,3 +137,251 @@
             - no - return false
     - Solution 2
         2- 
+
+### Save Password Solution
+    - Remove duplicates
+    - Your function should take in a string of characters and return a
+        string with the duplicate characters removed. Assume that your input
+        is lowercased with only letters and numbers.
+    - Solution:
+        - create a new, empty string called dupesRemoved
+        - loop through the string we want to remove dupes from
+            - if no, add it
+            - if yes, keep going through the loop (do nothing)
+        - dupesRemoved -- it has no duplicates!
+
+### Frequency of Letters in your name
+    - Write a function that counts how many times each letter of your name
+        occurs. Your function should take in your first and last name and return
+        an object where the keys are each character in your name, and the value
+        is how many times that character appears in your name.
+    - Example input: "Peggy Porth"
+    - Example output: {p: 2, e: 1, g: 2, y: 1, o: 1, r: 1, t: 1, h: 1}
+    - Your function should NOT count spaces and should not be case sensitive (a
+        lowercase t and a capital T should be considered the same character).
+    - Solution plan:
+        - peggyporth (our name)
+        - initialize a new empty object to hold the letter counted
+            - const count = {}
+        - remove all spaces and lowercase all characters of the input str
+            - toLowerCase() -> split(" ") -> join("");
+            - const name = str.toLowerCase().split(" ").join("");
+        - loop through the letters of the string
+            - for(let i = 0; i < name.length; i++)
+        - if the character is not the obj, add it, give it a value of 1
+            - check if is it on our object using bracket notation
+                - if(!count[name[i]])
+                - count[name[i]] = 1;
+        - if the character is already in the object, increment that char's value
+            - count[name[i]] += 1;
+
+### Chef Mario Recipe Solution 1
+    - Chef Mario was in the middle of writing his cookbook masterpiece
+        when he spilled coffee on his keyboard! Now all his recipes have repeat
+        ingredients.
+    - Help save Chef Mario's cookbook by writing a function that takes in an array 
+        and returns a new array with all the duplicates removed. 
+
+    - Example input: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops", "🦄 unicorn", "🍭 lollipops"];
+    - Example output: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops"];
+    - Solution plan:
+        - create a new arr to hold unique items 
+        - for each item in recipe arr
+        - if the item is NOT yet in the unique arr, push it in (includes() method)
+        - if it is in the unique arr, move on to the next item (do nothing)
+        - return the unique arr
+        Note: check the opposite
+        if(!uniqueItems.includes(item)){
+           uniqueItems.push(item);
+       }
+
+### Chef Mario Recipe Solution 2
+    - Solution 1 is limited, if we have two arrays with hundred/thousands data, we have to do with nested arrays
+    - Instead we can use and object to keep track the data
+    - Solution plan:
+        - create a new object to keep track of duplicates 
+        - use filter to loop thorugh each item in the arr
+            - for each item in arr
+                - look up the item in the lookup table
+                - if the item does NOT exist in the lookup, add it and return true
+            - return false
+
+### ### Chef Mario Recipe Solution 3
+    - Spread operator
+    - new Set()
+
+### Pumpkin Prizes Solution
+    - Write a function to flatten nested arrays of strings or
+        numbers into a single array. There's a method
+        for this, but pratice both doing it manually and using the method. 
+        Example input: [1, [4,5], [4,7,6,4], 3, 5]
+        Example output: [1, 4, 5, 4, 7, 6, 4, 3, 5]
+    - Solution plan:
+        - Built-in metod flatten()
+            - return arr.flat()
+        - Manually
+            - initialize a new, empty array
+                - loop through the passed in array and check - string or array?  
+                    - built-in method Array.isArray()
+                    - if the item is string, push into the new array
+                    - if the item is an array, loop through it, pushing each item into the array
+            - return new array
+
+### Count Students Solution
+    - He has an array of first-time attendees for each month of the year. 
+        Help him find the total number of attendees! Your function should
+        take in an array and return a number representing the total number
+        of new attendees. 
+        Example input: [1,2,3]
+        Example output: 6
+    - Solution plan:
+        - initialize a new variable to hold the sum of the arr 
+        - loop through the studentCount arr, add each value to the sum (for loop or forEach loop)
+            - with forEach loop we are using implicit return
+        - after done looping, return the sum
+            - pass an array [1,3,4]
+
+### Pizza Night Solution (Common exercise)
+    - Write a function to find the food with the highest number of votes. 
+    - Your function should take in a food object and find the food
+    - with the most votes. It should log the winner, along with 
+    - how many votes it received.  
+    - Example input: {"🐈 cats": 19, "🐕 dogs": 17} 
+    - Example output: The winner is 🐈 cats with 19 votes!
+    - Solution plan:
+        - initialize some new variable to: 
+            - keep track of the current highest vote number
+            - keep track of the current winning item
+        -  for each food option in the food object
+        - is the current value higher than the value of highestVotes?
+            - yes: the new value of highestVotes in the current value and
+            - winningItem = the current property
+        - return string announcing the winner using winningItme and highestVote variables
+
+### Totally Private Data Solution (Destructure data from the object)
+    - Write a function that maps through the current data and returns
+        a new an array of objects with only two properties: 
+        fullName and birthday. Each result in your 
+        array should look like this when you're done: 
+    {
+        fullName: "Levent Busser", 
+        birthday: "Fri Aug 20 1971"
+    }
+
+    Read about toDateString() for info on formatting a readable date.
+    Data is hosted locally on data.js
+    - Solution Plan:
+        - use map to loop through the data
+            - return an object with the two new properties
+            - concat the first and last name
+            - create a new date object, passing in the dob
+            - format by calling toDateString() method
+
+### Find free Podcast Solution (map() and filter() methods)
+    - Transform Mock Data (data1.js file)
+    - Dont forget to import our data using 'import' ES6 syntax
+        - import podcasts from './data1.js';
+    - Write a function that takes in the podcast data and returns an new
+        array of only those podcasts which are free.
+        Additionally, your new array should return only 
+        objects containing only the podcast title, rating, and whether or 
+        not it is paid. 
+        Expected output: 
+        [
+            {title: "Scrimba Podcast", rating: 10, paid: false}, 
+            {title: "Something about Witches", rating: 8, paid: false}, 
+            {title: "Coding Corner", rating: 9, paid: false}
+        ]
+    - Solution Plan:
+        - filter list by paid prop
+        - use map to create a new array of objects with only the specified properties
+            - chain both methods 
+
+### Candy Sale Solution
+    - Transform Mock Data (data2.js)
+    - Dont forget to import our data using 'import' ES6 syntax
+        - import products from './data2.js';
+    - To buy up all the candy, use map() and filter() to put all the
+   candy into a `shoppingCart` array. 
+   The new array should contain only the item and the price, like
+   this: 
+   Expected output: 
+   [
+       {item: "🍭", price: 2.99},
+       {item: "🍫", price: 1.99}, 
+       {item: "🍬", price: 0.89}
+    ]
+    - Solution plan:
+        - filter the data by product.type -- only sweet
+        - loop through the data using map 
+        - for every candy, return a new object with only item and price
+        - chain methods
+        - return an object
+        - bonus:
+            - destructure and use short syntax
+
+### Shopping Cart Solution (reduce() method)
+    - Transfrom Mock Data (data3.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data3.js';
+    - Use reduce() to total the groceries. 
+    Then find a method that will round the total to 2 decimal places.
+    Example output: 73.44
+    - Solution Plan:
+        - Only reduce you have to use
+        - toFixed()
+
+### Total Savory Items Solution (no other operations)
+    - Transfrom Mock Data (data4.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data4.js';
+    - Use reduce() and only reduce() to calculate and return 
+    the total cost of only the savory
+    items in the shopping cart.
+    Expected output: 9.97
+    - Solution Plan:
+        - check if the current item has a type of "savory"
+        - if yes, return acc += curr.price
+        - if no, return acc
+
+### Holiday gift shop Solution (sort method() )
+    - Transfrom Mock Data (data5.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data5.js';
+    - Study the sort method, callback - comparison
+    -     You're online shopping for holiday gifts, but money is tight
+    so we need to look at the cheapest items first. 
+    Use the built in sort() method to write a function that returns a new array of
+    products sorted by price, cheapest to most expensive. 
+    
+    Then log the item and the price to the console: 
+    
+    💕,0
+    🍬,0.89
+    🍫,0.99
+    🧁,0.99
+    📚,0.99
+    ... continued
+    
+    - Solution Plan:
+        - positive num - a before b 
+            neg - b before a 
+            0 - nothing changes 
+            a - b sorts numbers in ascending order and 
+            b - a sorts numbers in descending order
+
+### Unique Genre Tags Solution 
+    - Transfrom Mock Data (data6.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data6.js';
+    - As a software dev at ScrimFlix, you're working on a feature 
+    to let users browse TV shows by tag. The first step is to collect all 
+    the tags from our data into a new array. Then we'll need 
+    to filter out the duplicate tags. 
+    Write a function that takes in the media data and returns
+    a flat array of unique tags.
+    Expected output: 
+    ["supernatural", "horror", "drama",
+    "fantasy", "reality", "home improvement", "comedy", "sci-fi", "adventure"]
+    - Solution plan:
+        - 
