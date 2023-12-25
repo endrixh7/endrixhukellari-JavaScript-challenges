@@ -383,5 +383,130 @@
     Expected output: 
     ["supernatural", "horror", "drama",
     "fantasy", "reality", "home improvement", "comedy", "sci-fi", "adventure"]
-    - Solution plan:
-        - 
+    - Solution plan 1 (Array method):
+        - use map to loop through the data and get a new array of tags
+        - flatten the tags array with .flat()
+        - create a new array uniqueTags to hold the unique values
+        - loop through the tags array
+            - is the element already in the uniqueTags arr? 
+                - no: push into arr
+                - yes: keep going
+        - return uniqueTags arr
+    - Solution plan 2: (Object method, Data and Algorithm style)
+        - Optimized solution
+        - Eleminate nested loops
+        - filter tags arr
+        - look up the tag in the uniqueTags obj
+        - if it's not the, we have a unique item 
+        - put the item in our object with a value of true
+
+### Abroad Airlines Solution - built-in sorth() method (find a podcast as long as your flight)
+    - Transfrom Mock Data (data7.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data7.js';
+    - Our Scrimba Airlines in-flight entertainment package 
+    includes a variety of podcasts. We need to add a feature that suggests
+    podcasts to our patrons based on whether a flight is short or long. 
+
+    Your sort function should take two arguments: the podcast data and
+    flight length. If the flight is 60 minutes or less, sort the podcast list 
+    from shortest to longest. If it's anything else, sort from longest
+    to shortest. 
+
+    Your function shouldn't return anything. Instead log a numbered list 
+    of the title and duration of 
+    each podcast to the console, like this:
+
+    1. Crime Fan, 150 minutes
+    2. Mythical Creatures, 99 minutes
+    3. Crime Crime Crime, 70 minutes
+    4. Coding Corner, 55 minutes
+    5. Scrimba Podcast, 50 minutes
+    6. Something about Witches, 35 minutes
+
+    Note:   a - b will sort an array in descending
+            b - a will sort in ascending order
+    
+    - Solution:
+        - Check if flight is greater than 60 minutes
+        - if yes, sort decending order (longest to shortest)
+        - if no, sort ascending order (shortest to longest)
+        - loop through my sorted array
+        - construct a string using the title and duration props 
+        - use the index to number the list
+        - console.log each item
+
+### Popularity Contest Solution (reduce built-in method() )
+    - - Transfrom Mock Data (data8.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data8.js';
+    - Iggy the Influencer and Toby the Tiktoker are dying to know
+        who's more popular on social media. 
+        Toby's TikToks get an average of 400 likes. On average, how many
+        likes do Iggy's Instagram posts get? 
+        In data8.js you'll find a list of Iggy's recent posts. 
+        Use reduce() to write a function that returns the average number of likes.
+        To find the average, add up the total number of likes, then divide
+        by the total number of posts.
+    - Solution plan: 
+        - reduce to single total
+            - add curr.likes to acc
+        - divide the total by data.length to get the avg
+
+### Night Naughty Solution (use reduce() method not flat() method )
+    - Transfrom Mock Data (data8.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import shoppingCart from './data8.js';
+    - It's time for the Scrimbies, a prestigious award show for podcast hosts.
+        We need to assemble a list of podcast hosts so we can start handing out awards. 
+        Write a function that takes in the podcast data and
+        returns a flat array of podcast hosts. There are quite a few ways to approach
+        this, but try solving the problem using reduce(). 
+        Once you have a flat array of hosts, write a second function to randomly assign each host a prize
+        from the awards array. 
+        Example output: ["🏆 Alex Booker", "⭐ Bob Smith", "💎 Camilla Lambert" ...]
+    - Solution plan: 
+        - flat arrays using reduce()
+            - reduce the podcasts data down to a list of hosts
+            - add curr.hosts to the acc array
+        - Two solutions for flattening arrays:
+        - Solution 1:
+        - const awards = ["🏆", "⭐", "💎", "🥇", "👑"];
+            function getHosts(data){
+            // reduce the podcasts data down to a list of hosts
+            return data.reduce((acc, curr)=>{
+                // add curr.hosts to the acc array
+                return acc.concat(curr.hosts)
+            }, [])
+            }
+        - Solution 2: (spread operator)
+        const awards = ["🏆", "⭐", "💎", "🥇", "👑"];
+        function getHosts(data){
+        // reduce the podcasts data down to a list of hosts
+        return data.reduce((acc, curr)=>{
+            // add curr.hosts to the acc array
+            return [...acc, ...curr.hosts]
+        }, [])
+        }
+
+        - function assignAwards(data){
+            // use getHosts() to get a flat array of podcasts hosts
+            // map through my array of hosts. for each:
+                // use Math.random to generate a rand num between 0 and length of award arr
+                // use the rand num to access a random award index
+                // use string literal to concast a random award to each host                 
+        }
+
+        -function assignAwards(data){
+            // use getHosts() to get a flat array of podcasts hosts
+            const hosts = getHosts(data);
+            // map through my array of hosts. for each:
+            return hosts.map(host => {
+                // use Math.random to generate a rand num between 0 and length of award arr
+                const randIndex = Math.floor(Math.random() * awards.length); 
+                // use the rand num to access a random award index
+                // use string literal to concast a random award to each host 
+                return `${awards[randIndex]} ${host}`;
+            });   
+        }
+
