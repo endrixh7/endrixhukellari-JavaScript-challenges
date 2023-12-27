@@ -610,4 +610,42 @@
                 }
                 console.log(isAnagramInArray("Tom Chant Scrimba Teacher", anagrams)); test it
 
-### 
+### Emoji flower bed Solution (API challenge)
+    - Oh no, our emoji flower bed is infested with mammals, trees and leaves!
+        Without changing the API url, write a function to transform your 
+        data before it's displayed. The function should eliminate
+        everything but bugs and flowers. Use your function in the API call.  
+        Hint: Be sure to console the data to see what properties can help you do this!
+    - Solution plan:
+        - First check the 'response' what data we have
+        - filter by group property - "animal bug" && "plant flower"
+        - render to HTML
+
+### Emoji Slot machine (API challenge)
+    - Let's create an emoji slot machine! Replace the hardcoded 
+   data with random fruit emojis from an emojis API. 
+   - Request emoji food data from the API resource below. Log it and look at it!
+        - Write a function that takes in the data and returns a new array of only
+        fruit emoji objects
+        - Write a function to get 9 random fruits from your new array of fruit 
+   - Load nine random fruits into the slot machine
+   - Solution plan:
+        - Create two functions
+            1- first function makeFruitArray
+                - filter by group prop, looking for a str that includes the word "fruit"
+            2- second function getRandomFruits
+                - initialize a new arr to hold 9 random fruits
+                - create a loop 0 - 9
+                - generate a random num
+                - use the random number as an index to choose a random fruit from the fruit arr
+                - push the random fruit into new arr 
+                - return new arr
+            3- Display data into HTML
+                - make the Fetch call
+                - get the response and pass it to the First function
+                - get the response and pass it to the Second function
+                - render it to the HTML
+                - catch the errors
+                - each time that refresh, get 9 new fruits
+
+### Congrats with the documentation, starting with implementation! EX
