@@ -454,9 +454,9 @@
         - divide the total by data.length to get the avg
 
 ### Night Naughty Solution (use reduce() method not flat() method )
-    - Transfrom Mock Data (data8.js)
+    - Transfrom Mock Data (data9.js)
     - Dont forget to import data using 'import' ES6 syntax
-        - import shoppingCart from './data8.js';
+        - import shoppingCart from './data9.js';
     - It's time for the Scrimbies, a prestigious award show for podcast hosts.
         We need to assemble a list of podcast hosts so we can start handing out awards. 
         Write a function that takes in the podcast data and
@@ -510,3 +510,104 @@
             });   
         }
 
+### Save the weekend Solution (automate your job)
+    - Transfrom Mock Data (data10.js)
+    - Dont forget to import data using 'import' ES6 syntax
+        - import podcasts from './data10.js';
+    - Your best friend is a copywriter who writes product descriptions 
+        for a living. You want to use your hacking skills to help them 
+        automate their job so you both can spend the weekend on a 
+        tropical island. 
+        Use array methods and the existing podcast data to write a function that
+        can generate a description for each podcast. 
+        Add the description as a new property on each podcast object, and return
+        a new podcast array where each podcast has a description. 
+        Each description should look like this: 
+            [
+                {
+                    id: 1,
+                    title: "Scrimba Podcast", 
+                    ...
+                    description: "Scrimba Podcast is a 50 minute education podcast hosted 
+                    by Alex Booker."
+                }
+                ...
+            ]
+        If the podcast has more than one host, you can display only the first host.
+        Stretch goal: Display all three hosts in the description, seperated with commas: 
+        Example description: "Coding Corner is a 55 minute education podcast hosted by Treasure Porth, Guil Hernandez, and Tom Chant."
+        - Solution plan:
+            - map through the data
+            - destructure the data
+            - use title, duration, genre and host data to make description
+            - for each podcast object, add description prop
+                - two ways to add the 'description' prop
+                    - First, manually
+                        - podcast["description"] = `${title} is a ${duration} minute ${genre} podcast hosted 
+                          by ${hosts[0]}.`;
+                    - Second, returning a new object, modern way
+                        - return {
+                            ...podcast,
+                            description: `${title} is a ${duration} minute ${genre} podcast hosted 
+                            by ${hosts[0]}.`
+                            }
+
+### Anagrams in an Array Solution
+    - Each item in the anagrams array is an anagram of a Scrimba teacher's
+        first and last name, plus the phrase "Scrimba teacher". 
+        Write a function to determine which strings in the array are 
+        anagrams of "Bob Ziroll Scrimba Teacher".
+        Your function should take two parameters: the phrase you want to compare to
+        the anagrams, and an array of anagrams. The function should return
+        a new array of anagrams that match the phrase. 
+        Example input: treat, ["tater", "tree", "teart", "tetra", "heart", "hamster"]
+        Example output: ["tater", "teart", "tetra"]
+        Bonus: What other teachers are represented in these anagrams?
+    - Solution plan:
+        - Create the first function that sortPhase():
+            - Takes a parameter
+            - turn toLowerCase()
+            - split() the phrase
+            - sort() the phrase
+            - join() the phrase
+            - trim() the space inside the phrase
+        - Create the second function that operates on the array isAnagramInArray():
+            - array data
+                const anagrams = [
+                    "moz biblical torchbearers",  
+                    "it's razorbill beachcomber", 
+                    "och mcrobbie trailblazers", 
+                    "bib chorizo cellarmaster", 
+                    "thor scribble carbimazole", 
+                    "zilla borscht abercrombie", 
+                    "brazil scorcher batmobile", 
+                    "dame shelburne characterizing", 
+                    "uber englishman characterized", 
+                    "agnes rhumbline characterized", 
+                    "rehab scrutinized charlemagne", 
+                    "dreams zurich interchangeable", 
+                    "bam hamster technocratic", 
+                    "mechatronic masterbatch", 
+                    "bam ratchet mechatronics"
+                ]
+            - use .filter()
+            - use sortPhrase() to sort both the input phrase and the current phrase in the array
+            - compare the two words to return true or false
+                - function sortPhrase(phrase){
+                    return phrase.toLowerCase().split('').sort().join('').trim();
+                }
+
+                function isAnagramInArray(anagram, arr){
+                    // use .filter()
+                    // use sortPhrase() to sort both the input phrase and the current phrase in the array
+                    // compare the two words to return true or false
+                    return arr.filter(item => {
+                        const word1 = sortPhrase(anagram);
+                        const word2 = sortPhrase(item);
+                        
+                        return word1 === word2;
+                    })
+                }
+                console.log(isAnagramInArray("Tom Chant Scrimba Teacher", anagrams)); test it
+
+### 
